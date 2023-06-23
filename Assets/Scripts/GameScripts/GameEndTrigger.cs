@@ -10,5 +10,6 @@ public class GameEndTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameEndTriggered?.Invoke();
+        gameObject.SetActive(false);
     }
 }

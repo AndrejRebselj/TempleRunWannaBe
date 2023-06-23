@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class BonusPointsController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BonusPointsController : MonoBehaviour
     GameObject bonusGiver;
     MeshCollider weaponMesh;
     GameObject weapon;
+    [SerializeField]
+    VisualEffect hit;
     public static event Action WeaponIsDone;
 
     private void Start()
@@ -24,6 +27,7 @@ public class BonusPointsController : MonoBehaviour
 
     private void BonusIsBeingHit()
     {
+        hit.Play();
         StoreSaver.currency += 2;
         ScoreController.currentScore += 2;
         weapon.transform.localScale = new Vector3(weapon.transform.localScale.x, weapon.transform.localScale.y - 10, weapon.transform.localScale.z);
